@@ -1,7 +1,8 @@
 import type { ResumeStructured } from "@/lib/types";
 
 async function getPDFParseCtor() {
-  await import("@/lib/polyfills/pdfjs-node");
+  const { initPdfJsForNode } = await import("@/lib/polyfills/pdfjs-node");
+  await initPdfJsForNode();
   const { PDFParse } = await import("pdf-parse");
   return PDFParse;
 }
