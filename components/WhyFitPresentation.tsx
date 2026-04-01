@@ -18,53 +18,62 @@ export function WhyFitPresentation({ page, whyFit }: Props) {
   const bodyParas = paragraphsFromText(whyFit.why_i_am_a_fit);
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <header className="mb-10 text-center">
-        <p className="text-sm font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-          Why I fit
-        </p>
-        <h1 className="mt-3 text-2xl font-semibold leading-snug text-neutral-900 dark:text-neutral-100 sm:text-3xl">
-          {whyFit.headline}
-        </h1>
-        <p className="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-          {page.candidate_name} · {page.target_role} at {page.target_company}
-        </p>
-      </header>
+    <article className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+      <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        {page.candidate_name} · {page.target_role} at {page.target_company}
+      </p>
 
-      <div className="space-y-4 text-neutral-800 dark:text-neutral-200">
+      <p className="mt-4 text-left text-base font-normal leading-relaxed text-neutral-800 dark:text-neutral-200">
+        {whyFit.headline}
+      </p>
+
+      <h2 className="mt-10 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+        Why I fit
+      </h2>
+      <div className="mt-4 space-y-4 text-left text-base font-normal leading-relaxed text-neutral-800 dark:text-neutral-200">
         {bodyParas.map((p, i) => (
-          <p key={i} className="leading-relaxed">
-            {p}
-          </p>
+          <p key={i}>{p}</p>
         ))}
       </div>
 
-      <section className="mt-12 border-t border-neutral-200 pt-10 dark:border-neutral-700">
-        <h2 className="mb-6 text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-          Role fit
-        </h2>
-        <ul className="space-y-6">
-          {whyFit.key_highlights.map((row, i) => (
-            <li
-              key={`${i}-${row.requirement.slice(0, 24)}`}
-              className="rounded-lg border border-neutral-200 bg-neutral-50/80 p-4 dark:border-neutral-700 dark:bg-neutral-900/50 sm:p-5"
-            >
-              <p className="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+      <h2 className="mt-12 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+        Role Fit
+      </h2>
+      <div className="mt-4 overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-700">
+        <table className="w-full min-w-[min(100%,36rem)] border-collapse text-left text-sm">
+          <thead>
+            <tr className="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900/60">
+              <th
+                scope="col"
+                className="px-4 py-3 font-semibold text-neutral-900 dark:text-neutral-100"
+              >
                 Requirement
-              </p>
-              <p className="mt-1 text-sm font-medium text-neutral-900 dark:text-neutral-100">
-                {row.requirement}
-              </p>
-              <p className="mt-4 text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
+              </th>
+              <th
+                scope="col"
+                className="px-4 py-3 font-semibold text-neutral-900 dark:text-neutral-100"
+              >
                 How I meet it
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-neutral-800 dark:text-neutral-200">
-                {row.how_i_meet_it}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {whyFit.key_highlights.map((row, i) => (
+              <tr
+                key={`${i}-${row.requirement.slice(0, 24)}`}
+                className="border-b border-neutral-100 last:border-b-0 dark:border-neutral-800"
+              >
+                <td className="align-top px-4 py-3 text-neutral-900 dark:text-neutral-100">
+                  {row.requirement}
+                </td>
+                <td className="align-top px-4 py-3 text-neutral-700 dark:text-neutral-300">
+                  {row.how_i_meet_it}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </article>
   );
 }

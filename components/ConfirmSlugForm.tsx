@@ -4,6 +4,7 @@ import { ThemePicker } from "@/components/ThemePicker";
 import { CopyLinkButton } from "@/components/CopyLinkButton";
 import { getPublicBaseUrl } from "@/lib/app-url";
 import { DEFAULT_PAGE_THEME, type PageTheme } from "@/lib/themes";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 type Props = {
@@ -67,6 +68,14 @@ export function ConfirmSlugForm({ pageId, suggestedSlug }: Props) {
           <p className="mt-2 text-neutral-600 dark:text-neutral-400">
             Share this link in your application follow-ups.
           </p>
+          <Link
+            href={publishedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-neutral-900 px-6 py-3 text-base font-medium text-white hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+          >
+            Open your page
+          </Link>
         </div>
         <div className="rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 break-all text-left text-sm text-neutral-800 dark:border-neutral-700 dark:bg-neutral-900/50 dark:text-neutral-200">
           {publishedUrl}

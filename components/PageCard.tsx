@@ -92,7 +92,7 @@ export function PageCard({ page, stats, baseUrl }: Props) {
         <div className="flex min-w-0 items-center gap-2">
           <Link
             href={detailHref}
-            className="min-w-0 flex-1 truncate text-base font-semibold text-neutral-900"
+            className="min-w-0 flex-1 truncate text-base font-semibold text-neutral-900 dark:text-neutral-100"
           >
             {page.target_role} · {page.target_company}
           </Link>
