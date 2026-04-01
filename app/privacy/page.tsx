@@ -1,4 +1,5 @@
 import { BrandLogo } from "@/components/BrandLogo";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -9,24 +10,27 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <header className="border-b border-neutral-100">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4 sm:px-6">
-          <BrandLogo href="/" height={36} />
-          <Link
-            href="/"
-            className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
-          >
-            Home
-          </Link>
+    <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+      <header className="border-b border-neutral-100 dark:border-neutral-800">
+        <div className="mx-auto flex max-w-3xl flex-row items-center justify-between gap-2 px-4 py-4 sm:gap-4 sm:px-6">
+          <BrandLogo href="/" height={36} compact />
+          <div className="flex shrink-0 flex-nowrap items-center gap-1.5 sm:gap-3">
+            <Link
+              href="/"
+              className="whitespace-nowrap text-xs font-medium text-neutral-600 hover:text-neutral-900 sm:text-sm dark:text-neutral-400 dark:hover:text-neutral-100"
+            >
+              Home
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-        <h1 className="text-3xl font-semibold tracking-tight text-neutral-900">
+        <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
           Privacy Policy
         </h1>
-        <p className="mt-2 text-sm text-neutral-500">
+        <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-500">
           Last updated: {new Date().toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
@@ -34,28 +38,28 @@ export default function PrivacyPolicyPage() {
           })}
         </p>
 
-        <div className="mt-10 space-y-4 text-[15px] leading-relaxed text-neutral-700">
+        <div className="mt-10 space-y-4 text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">
           <p>
             hireme.page (&quot;we&quot;, &quot;us&quot;) operates this website and
             service. This policy describes how we collect, use, and share personal
             information when you use hireme.page.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Information we collect
           </h2>
           <p className="pt-1">
-            <strong className="text-neutral-900">Account data.</strong> When you
+            <strong className="text-neutral-900 dark:text-neutral-100">Account data.</strong> When you
             sign up, we process your email address and authentication data through
             our identity provider (Supabase Auth).
           </p>
           <p>
-            <strong className="text-neutral-900">Application content.</strong>{" "}
+            <strong className="text-neutral-900 dark:text-neutral-100">Application content.</strong>{" "}
             You may upload a resume (PDF), provide a job posting URL, and we
             store derived text and structured data used to build your public page.
           </p>
           <p>
-            <strong className="text-neutral-900">Analytics and views.</strong>{" "}
+            <strong className="text-neutral-900 dark:text-neutral-100">Analytics and views.</strong>{" "}
             When someone visits your published page, we may record the time of
             the visit, approximate location (e.g. country or city when available
             from our hosting provider), IP address, browser type, referrer, and
@@ -63,13 +67,13 @@ export default function PrivacyPolicyPage() {
             This helps you understand interest in your page.
           </p>
           <p>
-            <strong className="text-neutral-900">Email notifications.</strong>{" "}
+            <strong className="text-neutral-900 dark:text-neutral-100">Email notifications.</strong>{" "}
             If enabled, we may send you email about activity on your pages (for
             example, when someone views your page), using the address associated
             with your account.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             How we use information
           </h2>
           <p>We use the information above to:</p>
@@ -81,7 +85,7 @@ export default function PrivacyPolicyPage() {
             <li>Comply with law and protect rights and safety</li>
           </ul>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             AI processing
           </h2>
           <p>
@@ -92,7 +96,7 @@ export default function PrivacyPolicyPage() {
             you are not allowed to share with such providers.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Service providers
           </h2>
           <p>
@@ -103,7 +107,7 @@ export default function PrivacyPolicyPage() {
             agreements with them.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Cookies and similar technologies
           </h2>
           <p>
@@ -113,7 +117,7 @@ export default function PrivacyPolicyPage() {
             events as described above.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Retention and deletion
           </h2>
           <p>
@@ -123,7 +127,7 @@ export default function PrivacyPolicyPage() {
             limited period.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Your choices
           </h2>
           <p>
@@ -133,7 +137,7 @@ export default function PrivacyPolicyPage() {
             identity before responding.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Changes
           </h2>
           <p>
@@ -141,7 +145,7 @@ export default function PrivacyPolicyPage() {
             version on this page and adjust the &quot;Last updated&quot; date.
           </p>
 
-          <h2 className="mt-10 text-xl font-semibold text-neutral-900">
+          <h2 className="mt-10 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
             Contact
           </h2>
           <p>
@@ -151,7 +155,7 @@ export default function PrivacyPolicyPage() {
         </div>
 
         <p className="mt-12 text-sm text-neutral-500">
-          <Link href="/" className="font-medium text-neutral-700 hover:text-neutral-900">
+          <Link href="/" className="font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100">
             ← Back to home
           </Link>
         </p>

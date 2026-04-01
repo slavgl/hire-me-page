@@ -6,14 +6,14 @@ export default function NewPageStep1() {
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <Link
         href="/dashboard"
-        className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+        className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
       >
         ← Dashboard
       </Link>
-      <h1 className="mt-6 text-2xl font-semibold text-neutral-900">
+      <h1 className="mt-6 text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
         Create a page
       </h1>
-      <p className="mt-2 text-neutral-600">
+      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
         Select / upload your resume and paste the job posting link.
       </p>
       <div className="mt-8">

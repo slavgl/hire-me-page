@@ -41,9 +41,11 @@ export function ThemeChangeControl({ pageId, currentTheme }: Props) {
   }
 
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-4">
-      <h3 className="text-sm font-medium text-neutral-900">Public page style</h3>
-      <p className="mt-1 text-xs text-neutral-500">
+    <div className="rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900">
+      <h3 className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+        Public page style
+      </h3>
+      <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
         Choose before you publish. After publishing, this cannot be changed.
       </p>
       <div className="mt-4">
@@ -58,13 +60,13 @@ export function ThemeChangeControl({ pageId, currentTheme }: Props) {
           type="button"
           disabled={status === "saving"}
           onClick={() => void save()}
-          className="mt-4 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60"
+          className="mt-4 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
         >
           {status === "saving" ? "Saving…" : "Save theme"}
         </button>
       ) : null}
       {message ? (
-        <p className="mt-2 text-sm text-red-600" role="alert">
+        <p className="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
           {message}
         </p>
       ) : null}

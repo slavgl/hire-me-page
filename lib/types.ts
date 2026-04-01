@@ -1,3 +1,4 @@
+import type { AiGenerationMeta } from "@/lib/ai-generation";
 import type { PageTheme } from "@/lib/themes";
 import type { ResumeStructuredParsed } from "@/lib/resume-schema";
 import type { WhyFitStructured } from "@/lib/why-fit-schema";
@@ -23,6 +24,8 @@ export type PageRow = {
   last_view_notification_at?: string | null;
   /** Set after migration; default `minimal` in UI when absent */
   theme?: PageTheme;
+  /** Anthropic model + token usage per generation step (not shown in UI) */
+  ai_generation?: AiGenerationMeta | null;
   created_at: string;
   updated_at: string;
 };

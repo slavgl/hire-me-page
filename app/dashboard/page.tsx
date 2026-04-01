@@ -45,8 +45,10 @@ export default async function DashboardPage() {
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-neutral-900">Your pages</h1>
-          <p className="text-sm text-neutral-600">
+          <h1 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
+            Your pages
+          </h1>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
             Track views and downloads for each page.
           </p>
         </div>
@@ -58,11 +60,11 @@ export default async function DashboardPage() {
         </Link>
       </div>
       {list.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-neutral-300 bg-neutral-50 p-10 text-center">
-          <p className="text-neutral-700">No pages yet.</p>
+        <div className="rounded-xl border border-dashed border-neutral-300 bg-neutral-50 p-10 text-center dark:border-neutral-700 dark:bg-neutral-900/40">
+          <p className="text-neutral-700 dark:text-neutral-300">No pages yet.</p>
           <Link
             href="/dashboard/new"
-            className="mt-4 inline-block font-medium text-neutral-900 underline"
+            className="mt-4 inline-block font-medium text-neutral-900 underline dark:text-neutral-100"
           >
             Upload your resume and get a link
           </Link>

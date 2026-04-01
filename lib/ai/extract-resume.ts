@@ -1,11 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
+import type { AnthropicUsage } from "@/lib/ai-generation";
+import { usageFromAnthropicMessage } from "@/lib/ai-generation";
 import {
   resumeStructuredSchema,
   type ResumeStructuredParsed,
 } from "@/lib/resume-schema";
 
 export type ExtractResumeResult =
-  | { ok: true; data: ResumeStructuredParsed }
+  | { ok: true; data: ResumeStructuredParsed; usage: AnthropicUsage; model: string }
   | { ok: false; error: string };
 
 function err(message: string): ExtractResumeResult {
@@ -82,7 +84,13 @@ Rules: Preserve factual content; do not invent employers, dates, or degrees. Use
         "Resume extraction failed: the model output did not match the expected resume format. Try again or use a clearer PDF.",
       );
     }
-    return { ok: true, data: parsed.data };
+    const resolvedModel = msg.model ?? model;
+    return {
+      ok: true,
+      data: parsed.data,
+      usage: usageFromAnthropicMessage(msg),
+      model: resolvedModel,
+    };
   } catch (e: unknown) {
     const detail = e instanceof Error ? e.message : String(e);
     return err(`Resume extraction failed (Anthropic): ${detail}`);

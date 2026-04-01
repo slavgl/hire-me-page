@@ -64,10 +64,10 @@ function MinimalLayout({
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <header className="mb-12 text-center">
-        <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
+        <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl">
           {page.candidate_name}
         </h1>
-        <p className="mt-3 text-lg text-neutral-600">
+        <p className="mt-3 text-lg text-neutral-600 dark:text-neutral-400">
           Application for {page.target_role} at {page.target_company}
         </p>
       </header>
@@ -75,8 +75,8 @@ function MinimalLayout({
         page={page}
         structured={structured}
         useRawOnly={!!useRawOnly}
-        sectionTitleClass="mb-3 border-b border-neutral-200 pb-2 text-sm font-semibold uppercase tracking-wide text-neutral-500"
-        bodyClass="text-neutral-800"
+        sectionTitleClass="mb-3 border-b border-neutral-200 pb-2 text-sm font-semibold uppercase tracking-wide text-neutral-500 dark:border-neutral-700 dark:text-neutral-400"
+        bodyClass="text-neutral-800 dark:text-neutral-200"
       />
     </article>
   );
@@ -94,24 +94,29 @@ function EditorialLayout({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 sm:px-8 sm:py-20">
-      <header className="mb-14 border-b border-neutral-200 pb-10">
+      <header className="mb-14 border-b border-neutral-200 pb-10 dark:border-neutral-700">
         <h1
-          className="font-[family-name:var(--font-editorial-display)] text-4xl font-medium tracking-tight text-neutral-950 sm:text-5xl"
+          className="font-[family-name:var(--font-editorial-display)] text-4xl font-medium tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-5xl"
         >
           {page.candidate_name}
         </h1>
-        <p className="mt-4 text-lg text-neutral-600">
+        <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
           Application for{" "}
-          <span className="text-neutral-900">{page.target_role}</span> at{" "}
-          <span className="italic text-neutral-800">{page.target_company}</span>
+          <span className="text-neutral-900 dark:text-neutral-100">
+            {page.target_role}
+          </span>{" "}
+          at{" "}
+          <span className="italic text-neutral-800 dark:text-neutral-300">
+            {page.target_company}
+          </span>
         </p>
       </header>
       <ResumeBody
         page={page}
         structured={structured}
         useRawOnly={!!useRawOnly}
-        sectionTitleClass="mb-4 font-[family-name:var(--font-editorial-display)] text-xl font-medium text-neutral-900"
-        bodyClass="text-neutral-800 leading-relaxed"
+        sectionTitleClass="mb-4 font-[family-name:var(--font-editorial-display)] text-xl font-medium text-neutral-900 dark:text-neutral-100"
+        bodyClass="text-neutral-800 leading-relaxed dark:text-neutral-200"
       />
     </article>
   );
@@ -129,7 +134,7 @@ function BoldLayout({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <header className="mb-12 rounded-2xl bg-neutral-900 px-6 py-10 text-center text-white sm:px-10">
+      <header className="mb-12 rounded-2xl bg-neutral-900 px-6 py-10 text-center text-white sm:px-10 dark:bg-neutral-800">
         <h1
           className="font-[family-name:var(--font-bold-display)] text-3xl font-extrabold tracking-tight sm:text-4xl"
         >
@@ -143,8 +148,8 @@ function BoldLayout({
         page={page}
         structured={structured}
         useRawOnly={!!useRawOnly}
-        sectionTitleClass="mb-3 text-sm font-bold uppercase tracking-widest text-neutral-900"
-        bodyClass="text-neutral-800"
+        sectionTitleClass="mb-3 text-sm font-bold uppercase tracking-widest text-neutral-900 dark:text-neutral-100"
+        bodyClass="text-neutral-800 dark:text-neutral-200"
       />
     </article>
   );
@@ -202,22 +207,24 @@ function ResumeBody({
                   {(job.title || job.company || job.period) && (
                     <div className="mb-2">
                       {job.title ? (
-                        <p className="font-semibold text-neutral-900">
+                        <p className="font-semibold text-neutral-900 dark:text-neutral-100">
                           {job.title}
                           {job.company ? (
-                            <span className="font-normal text-neutral-600">
+                            <span className="font-normal text-neutral-600 dark:text-neutral-400">
                               {" "}
                               · {job.company}
                             </span>
                           ) : null}
                         </p>
                       ) : job.company ? (
-                        <p className="font-semibold text-neutral-900">
+                        <p className="font-semibold text-neutral-900 dark:text-neutral-100">
                           {job.company}
                         </p>
                       ) : null}
                       {job.period ? (
-                        <p className="text-sm text-neutral-500">{job.period}</p>
+                        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                          {job.period}
+                        </p>
                       ) : null}
                     </div>
                   )}
@@ -249,11 +256,14 @@ function ResumeBody({
             <ul className={`list-disc space-y-2 pl-5 leading-relaxed ${bodyClass}`}>
               {structured.education.map((ed, i) => (
                 <li key={i}>
-                  <span className="font-medium text-neutral-900">
+                  <span className="font-medium text-neutral-900 dark:text-neutral-100">
                     {ed.institution}
                   </span>
                   {ed.detail ? (
-                    <span className="text-neutral-600"> — {ed.detail}</span>
+                    <span className="text-neutral-600 dark:text-neutral-400">
+                      {" "}
+                      — {ed.detail}
+                    </span>
                   ) : null}
                 </li>
               ))}

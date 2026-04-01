@@ -1,11 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
+import type { AnthropicUsage } from "@/lib/ai-generation";
+import { usageFromAnthropicMessage } from "@/lib/ai-generation";
 import {
   type WhyFitStructured,
   whyFitStructuredSchema,
 } from "@/lib/why-fit-schema";
 
 export type GenerateWhyFitResult =
-  | { ok: true; data: WhyFitStructured }
+  | { ok: true; data: WhyFitStructured; usage: AnthropicUsage; model: string }
   | { ok: false; error: string };
 
 function err(message: string): GenerateWhyFitResult {
@@ -140,7 +142,13 @@ export async function generateWhyFitWithAnthropic(
         "Why I fit generation failed: the model output did not match the expected format. Try again.",
       );
     }
-    return { ok: true, data: parsed.data };
+    const resolvedModel = msg.model ?? model;
+    return {
+      ok: true,
+      data: parsed.data,
+      usage: usageFromAnthropicMessage(msg),
+      model: resolvedModel,
+    };
   } catch (e: unknown) {
     const detail = e instanceof Error ? e.message : String(e);
     return err(`Why I fit generation failed (Anthropic): ${detail}`);

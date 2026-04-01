@@ -64,14 +64,14 @@ export function PageActions({ pageId, resumeFilePath }: Props) {
         type="button"
         disabled={busy}
         onClick={() => void remove()}
-        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-red-200 bg-red-50 text-red-800 hover:bg-red-100 disabled:opacity-50"
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-red-200 bg-red-50 text-red-800 hover:bg-red-100 disabled:opacity-50 dark:border-red-900/60 dark:bg-red-950/50 dark:text-red-300 dark:hover:bg-red-950/80"
         aria-label="Delete page"
         title="Delete page"
       >
         <TrashIcon className="h-4 w-4" />
       </button>
       {error ? (
-        <p className="w-full text-sm text-red-600" role="alert">
+        <p className="w-full text-sm text-red-600 dark:text-red-400" role="alert">
           {error}
         </p>
       ) : null}

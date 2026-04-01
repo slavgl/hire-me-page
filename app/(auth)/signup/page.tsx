@@ -35,8 +35,10 @@ export default function SignupPage() {
 
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-4 py-16">
-      <h1 className="text-2xl font-semibold text-neutral-900">Sign up</h1>
-      <p className="mt-2 text-sm text-neutral-600">
+      <h1 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
+        Sign up
+      </h1>
+      <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
         Create a free account. We&apos;ll send a magic link to your email.
       </p>
       <form onSubmit={(e) => void onSubmit(e)} className="mt-8 space-y-4">
@@ -52,35 +54,41 @@ export default function SignupPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-neutral-300 px-3 py-2.5 text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
+            className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2.5 text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
           />
         </div>
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full rounded-lg bg-neutral-900 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60"
+          className="w-full rounded-lg bg-neutral-900 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
         >
           {status === "loading" ? "Sending…" : "Continue"}
         </button>
       </form>
       {message ? (
         <p
-          className={`mt-4 text-sm ${status === "error" ? "text-red-600" : "text-neutral-700"}`}
+          className={`mt-4 text-sm ${status === "error" ? "text-red-600 dark:text-red-400" : "text-neutral-700 dark:text-neutral-300"}`}
           role="status"
         >
           {message}
         </p>
       ) : null}
-      <p className="mt-6 text-center text-xs text-neutral-500">
+      <p className="mt-6 text-center text-xs text-neutral-500 dark:text-neutral-500">
         By continuing, you agree to our{" "}
-        <Link href="/privacy" className="underline hover:text-neutral-800">
+        <Link
+          href="/privacy"
+          className="underline hover:text-neutral-800 dark:hover:text-neutral-200"
+        >
           Privacy Policy
         </Link>
         .
       </p>
-      <p className="mt-6 text-center text-sm text-neutral-600">
+      <p className="mt-6 text-center text-sm text-neutral-600 dark:text-neutral-400">
         Already have an account?{" "}
-        <Link href="/login" className="font-medium text-neutral-900 underline">
+        <Link
+          href="/login"
+          className="font-medium text-neutral-900 underline dark:text-neutral-100"
+        >
           Log in
         </Link>
       </p>

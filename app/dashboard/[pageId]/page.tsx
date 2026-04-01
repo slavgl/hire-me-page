@@ -48,7 +48,7 @@ function IconEye({ className }: { className?: string }) {
 const iconSm = "h-4 w-4 shrink-0";
 
 const toolbarBtnClass =
-  "inline-flex h-8 items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 text-xs font-medium text-neutral-900 hover:bg-neutral-50";
+  "inline-flex h-8 items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 text-xs font-medium text-neutral-900 hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800";
 
 export default async function PageAnalytics({ params }: Props) {
   const supabase = await createClient();
@@ -93,14 +93,14 @@ export default async function PageAnalytics({ params }: Props) {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
       <Link
         href="/dashboard"
-        className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+        className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
       >
         ← All pages
       </Link>
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
         <div className="min-w-0 flex-1">
           <h1
-            className="truncate text-2xl font-semibold text-neutral-900"
+            className="truncate text-2xl font-semibold text-neutral-900 dark:text-neutral-100"
             title={`${row.target_role} at ${row.target_company}`}
           >
             {row.target_role} at {row.target_company}
@@ -157,18 +157,18 @@ export default async function PageAnalytics({ params }: Props) {
       <div className="mt-8 space-y-8">
         <AnalyticsSummary stats={stats} uniqueVisitors={unique} />
         <div>
-          <h2 className="mb-3 text-lg font-medium text-neutral-900">
+          <h2 className="mb-3 text-lg font-medium text-neutral-900 dark:text-neutral-100">
             Views (last 30 days)
           </h2>
           <ViewsChart data={chart30} />
         </div>
         <div>
-          <h2 className="mb-3 text-lg font-medium text-neutral-900">
+          <h2 className="mb-3 text-lg font-medium text-neutral-900 dark:text-neutral-100">
             Recent activity
           </h2>
-          <div className="overflow-x-auto rounded-lg border border-neutral-200">
+          <div className="overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-700">
             <table className="min-w-full text-left text-sm">
-              <thead className="bg-neutral-50 text-neutral-600">
+              <thead className="bg-neutral-50 text-neutral-600 dark:bg-neutral-900/80 dark:text-neutral-400">
                 <tr>
                   <th className="px-3 py-2 font-medium">Time</th>
                   <th className="px-3 py-2 font-medium">Viewer</th>
@@ -179,17 +179,23 @@ export default async function PageAnalytics({ params }: Props) {
               <tbody>
                 {recent.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-3 py-6 text-center text-neutral-500">
+                    <td
+                      colSpan={4}
+                      className="px-3 py-6 text-center text-neutral-500 dark:text-neutral-400"
+                    >
                       No views yet. Share your link to see activity here.
                     </td>
                   </tr>
                 ) : (
                   recent.map((v) => (
-                    <tr key={v.id} className="border-t border-neutral-100">
-                      <td className="px-3 py-2 text-neutral-800">
+                    <tr
+                      key={v.id}
+                      className="border-t border-neutral-100 dark:border-neutral-800"
+                    >
+                      <td className="px-3 py-2 text-neutral-800 dark:text-neutral-200">
                         {new Date(v.viewed_at).toLocaleString()}
                       </td>
-                      <td className="px-3 py-2 text-neutral-800">
+                      <td className="px-3 py-2 text-neutral-800 dark:text-neutral-200">
                         {v.is_owner_view ? (
                           <span title="You opened this page while signed in">
                             You (owner)
@@ -200,10 +206,10 @@ export default async function PageAnalytics({ params }: Props) {
                           </span>
                         )}
                       </td>
-                      <td className="px-3 py-2 text-neutral-800">
+                      <td className="px-3 py-2 text-neutral-800 dark:text-neutral-200">
                         {[v.city, v.country].filter(Boolean).join(", ") || "—"}
                       </td>
-                      <td className="max-w-xs truncate px-3 py-2 text-neutral-600">
+                      <td className="max-w-xs truncate px-3 py-2 text-neutral-600 dark:text-neutral-400">
                         {v.referrer || "—"}
                       </td>
                     </tr>

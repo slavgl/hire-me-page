@@ -1,4 +1,5 @@
 import { extractResumeWithAnthropic } from "@/lib/ai/extract-resume";
+import { aiGenerationSchema } from "@/lib/ai-generation";
 import { generateWhyFitWithAnthropic } from "@/lib/ai/generate-why-fit";
 import { createClient } from "@/lib/supabase/server";
 import { parseResumePdf } from "@/lib/parse-resume";
@@ -153,6 +154,22 @@ export async function POST(request: Request) {
   const firstName = candidateName.split(/\s+/)[0] ?? candidateName;
   const suggestedSlug = suggestSlug(firstName, target_company);
 
+  const ai_generation = aiGenerationSchema.parse({
+    model: extraction.model,
+    calls: [
+      {
+        step: "resume_extract" as const,
+        input_tokens: extraction.usage.input_tokens,
+        output_tokens: extraction.usage.output_tokens,
+      },
+      {
+        step: "why_fit" as const,
+        input_tokens: whyFit.usage.input_tokens,
+        output_tokens: whyFit.usage.output_tokens,
+      },
+    ],
+  });
+
   const { data: page, error: insertError } = await supabase
     .from("pages")
     .insert({
@@ -169,6 +186,7 @@ export async function POST(request: Request) {
       why_fit_structured: whyFit.data as unknown as Record<string, unknown>,
       is_published: false,
       theme: DEFAULT_PAGE_THEME,
+      ai_generation,
     })
     .select("id")
     .single();

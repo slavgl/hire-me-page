@@ -1,5 +1,6 @@
 import { BrandLogo } from "@/components/BrandLogo";
 import { DownloadResumeButton } from "@/components/DownloadResumeButton";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { PublicPageTabs } from "@/components/PublicPageTabs";
 import { TrackPageView } from "@/components/TrackPageView";
 import { RESERVED_SLUGS } from "@/lib/slug";
@@ -54,18 +55,19 @@ export default async function PublicCandidatePage({ params }: Props) {
   const whyFit = parseWhyFitStructured(row.why_fit_structured);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
+    <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <TrackPageView pageId={row.id} />
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-4 pt-8 sm:flex-row sm:justify-end sm:px-6">
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 px-4 pt-8 sm:flex-row sm:justify-end sm:gap-3 sm:px-6">
         <DownloadResumeButton pageId={row.id} slug={row.slug} />
+        <ThemeToggle />
       </div>
       <PublicPageTabs page={row} structured={structured} whyFit={whyFit} />
       <p className="mx-auto max-w-3xl px-4 pb-4 text-center text-xs text-neutral-500 sm:px-6">
         This page records anonymous view analytics.
       </p>
-      <footer className="border-t border-neutral-100 py-8 text-center text-sm text-neutral-500">
+      <footer className="border-t border-neutral-100 py-8 text-center text-sm text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
         <p className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <span className="text-neutral-600">Made with</span>
+          <span className="text-neutral-600 dark:text-neutral-400">Made with</span>
           <BrandLogo href="/" height={28} />
           <span className="max-w-xs sm:max-w-none">
             — know when they see your application

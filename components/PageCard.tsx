@@ -87,8 +87,8 @@ export function PageCard({ page, stats, baseUrl }: Props) {
     : `/dashboard/${page.id}`;
 
   return (
-    <div className="rounded-lg border border-neutral-200 bg-white shadow-sm">
-      <div className="px-3 py-2.5 hover:bg-neutral-50/80 sm:px-4">
+    <div className="rounded-lg border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900/80">
+      <div className="px-3 py-2.5 hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 sm:px-4">
         <div className="flex min-w-0 items-center gap-2">
           <Link
             href={detailHref}
@@ -103,32 +103,32 @@ export function PageCard({ page, stats, baseUrl }: Props) {
           ) : null}
         </div>
         <Link href={detailHref} className="mt-0.5 block">
-          <p className="text-xs text-neutral-500">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">
             {page.candidate_name} ·{" "}
             {new Date(page.created_at).toLocaleDateString()}
           </p>
           {isDraft ? (
-            <p className="mt-0.5 text-xs font-medium text-amber-700">
+            <p className="mt-0.5 text-xs font-medium text-amber-700 dark:text-amber-400">
               Draft — finish your link
             </p>
           ) : null}
           {!isDraft ? (
             <dl className="mt-2 grid grid-cols-3 gap-x-3 gap-y-0.5 text-center text-xs sm:text-left">
               <div>
-                <dt className="text-neutral-500">Views</dt>
-                <dd className="text-sm font-semibold tabular-nums text-neutral-900">
+                <dt className="text-neutral-500 dark:text-neutral-400">Views</dt>
+                <dd className="text-sm font-semibold tabular-nums text-neutral-900 dark:text-neutral-100">
                   {stats.totalViews}
                 </dd>
               </div>
               <div>
-                <dt className="text-neutral-500">Downloads</dt>
-                <dd className="text-sm font-semibold tabular-nums text-neutral-900">
+                <dt className="text-neutral-500 dark:text-neutral-400">Downloads</dt>
+                <dd className="text-sm font-semibold tabular-nums text-neutral-900 dark:text-neutral-100">
                   {stats.downloads}
                 </dd>
               </div>
               <div>
-                <dt className="text-neutral-500">Last viewed</dt>
-                <dd className="text-sm font-semibold text-neutral-900">
+                <dt className="text-neutral-500 dark:text-neutral-400">Last viewed</dt>
+                <dd className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
                   {formatRelative(stats.lastViewed)}
                 </dd>
               </div>
@@ -137,19 +137,19 @@ export function PageCard({ page, stats, baseUrl }: Props) {
         </Link>
       </div>
       {!isDraft ? (
-        <div className="flex flex-wrap items-center gap-2 border-t border-neutral-100 px-3 py-2 sm:px-4">
+        <div className="flex flex-wrap items-center gap-2 border-t border-neutral-100 px-3 py-2 dark:border-neutral-800 sm:px-4">
           <Link
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 hover:bg-neutral-50"
+            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-800"
           >
             <IconEye className={iconSm} />
             View
           </Link>
           <Link
             href={detailHref}
-            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 hover:bg-neutral-50"
+            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 hover:bg-neutral-50 dark:border-neutral-600 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-800"
           >
             <IconCog className={iconSm} />
             Manage

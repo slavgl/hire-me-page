@@ -101,14 +101,16 @@ export function ResumeUploader() {
       className="mx-auto max-w-lg space-y-6"
     >
       {loadingList ? (
-        <p className="text-sm text-neutral-500">Checking for saved resumes…</p>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          Checking for saved resumes…
+        </p>
       ) : savedResumes.length > 0 ? (
         <fieldset className="space-y-3">
-          <legend className="text-sm font-medium text-neutral-700">
+          <legend className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
             Resume
           </legend>
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-neutral-800">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-neutral-800 dark:text-neutral-200">
               <input
                 type="radio"
                 name="resume_source"
@@ -118,7 +120,7 @@ export function ResumeUploader() {
               />
               Use a saved resume
             </label>
-            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-neutral-800">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-neutral-800 dark:text-neutral-200">
               <input
                 type="radio"
                 name="resume_source"
@@ -131,13 +133,13 @@ export function ResumeUploader() {
           </div>
           {source === "reuse" ? (
             <div>
-              <label className="mb-2 block text-xs font-medium text-neutral-600">
+              <label className="mb-2 block text-xs font-medium text-neutral-600 dark:text-neutral-400">
                 Saved resume
               </label>
               <select
                 value={reusePath}
                 onChange={(e) => setReusePath(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
                 required={source === "reuse"}
               >
                 {savedResumes.map((r) => (
@@ -149,14 +151,14 @@ export function ResumeUploader() {
             </div>
           ) : (
             <div>
-              <label className="mb-2 block text-xs font-medium text-neutral-600">
+              <label className="mb-2 block text-xs font-medium text-neutral-600 dark:text-neutral-400">
                 PDF file
               </label>
               <input
                 type="file"
                 accept="application/pdf"
                 required={source === "new"}
-                className="block w-full text-sm text-neutral-600 file:mr-4 file:rounded-md file:border-0 file:bg-neutral-900 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white"
+                className="block w-full text-sm text-neutral-600 file:mr-4 file:rounded-md file:border-0 file:bg-neutral-900 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white dark:text-neutral-400 file:dark:bg-neutral-100 file:dark:text-neutral-900"
                 onChange={(e) => setFile(e.target.files?.[0] ?? null)}
               />
             </div>
@@ -164,7 +166,7 @@ export function ResumeUploader() {
         </fieldset>
       ) : (
         <div>
-          <label className="mb-2 block text-sm font-medium text-neutral-700">
+          <label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
             Resume (PDF)
           </label>
           <input
@@ -187,9 +189,9 @@ export function ResumeUploader() {
           value={jobUrl}
           onChange={(e) => setJobUrl(e.target.value)}
           placeholder="https://…"
-          className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-neutral-900 shadow-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-100 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
         />
-        <p className="mt-1.5 text-xs text-neutral-500">
+        <p className="mt-1.5 text-xs text-neutral-500 dark:text-neutral-400">
           We load this page to extract the job description, company, and role, then
           generate your &quot;Why I fit&quot; section. Use a direct link to the posting.
         </p>
@@ -202,7 +204,7 @@ export function ResumeUploader() {
       <button
         type="submit"
         disabled={loading || loadingList}
-        className="w-full rounded-lg bg-neutral-900 py-3 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60"
+        className="w-full rounded-lg bg-neutral-900 py-3 text-sm font-medium text-white hover:bg-neutral-800 disabled:opacity-60 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
       >
         {loading ? "Creating your page…" : "Continue"}
       </button>

@@ -5,7 +5,7 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-        <div className="mx-auto max-w-md px-4 py-16 text-center text-neutral-600">
+        <div className="mx-auto max-w-md px-4 py-16 text-center text-neutral-600 dark:text-neutral-400">
           Loading…
         </div>
       }

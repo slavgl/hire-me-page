@@ -44,14 +44,14 @@ export default async function ConfirmSlugPage({ searchParams }: Props) {
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <Link
         href="/dashboard/new"
-        className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+        className="text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
       >
         ← Back
       </Link>
-      <h1 className="mt-6 text-2xl font-semibold text-neutral-900">
+      <h1 className="mt-6 text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
         Choose your link
       </h1>
-      <p className="mt-2 text-neutral-600">
+      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
         Confirm the URL for your page. You can edit the slug only; company and role
         stay as you entered.
       </p>
