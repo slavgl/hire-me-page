@@ -1,5 +1,10 @@
 import type { ResumeStructured } from "@/lib/types";
-import { PDFParse } from "pdf-parse";
+
+async function getPDFParseCtor() {
+  await import("@/lib/polyfills/pdfjs-node");
+  const { PDFParse } = await import("pdf-parse");
+  return PDFParse;
+}
 
 function isLetterCodePoint(cp: number): boolean {
   if (cp >= 0x41 && cp <= 0x5a) return true;
@@ -151,6 +156,7 @@ export async function parseResumePdf(buffer: Buffer): Promise<{
   structured: ResumeStructured;
   candidateName: string;
 }> {
+  const PDFParse = await getPDFParseCtor();
   const parser = new PDFParse({ data: buffer });
   const data = await parser.getText();
   await parser.destroy();
