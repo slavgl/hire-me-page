@@ -1,4 +1,5 @@
 import { AnalyticsSummary } from "@/components/AnalyticsSummary";
+import { RegenerateAiButton } from "@/components/RegenerateAiButton";
 import {
   CopyLinkButton,
   IconClipboardDocument,
@@ -89,6 +90,17 @@ export default async function PageAnalytics({ params }: Props) {
     .filter((v) => !v.is_resume_download)
     .slice(0, 25);
 
+  const hasResumeText = row.resume_text.trim().length > 0;
+  const hasJobContext =
+    Boolean(row.job_posting_url?.trim()) ||
+    Boolean(row.job_description_text?.trim());
+  const canRegenerateAi = hasResumeText && hasJobContext;
+  const regenerateDisabledReason = !hasResumeText
+    ? "This page has no resume text to run AI on."
+    : !hasJobContext
+      ? "Add a job posting URL when creating the page, or ensure a job description is stored."
+      : undefined;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
       <Link
@@ -155,6 +167,24 @@ export default async function PageAnalytics({ params }: Props) {
       ) : null}
 
       <div className="mt-8 space-y-8">
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50/80 p-4 dark:border-neutral-700 dark:bg-neutral-900/40">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                AI resume &amp; &quot;Why I fit&quot;
+              </h2>
+              <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                Re-run extraction and the fit summary using your saved resume and job
+                posting (refreshes the posting when a URL is saved).
+              </p>
+            </div>
+            <RegenerateAiButton
+              pageId={row.id}
+              disabled={!canRegenerateAi}
+              disabledReason={regenerateDisabledReason}
+            />
+          </div>
+        </div>
         <AnalyticsSummary stats={stats} uniqueVisitors={unique} />
         <div>
           <h2 className="mb-3 text-lg font-medium text-neutral-900 dark:text-neutral-100">
