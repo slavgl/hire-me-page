@@ -28,13 +28,13 @@ export default function LandingPage() {
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-6 sm:px-6 sm:pt-10">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl sm:leading-tight dark:text-neutral-50">
-            Stand out from every
+            Know the moment a recruiter
             <br />
-            other applicant.
+            opens your application.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-600 sm:text-xl dark:text-neutral-400">
-            Upload your resume, paste a job URL — get a shareable page that shows
-            exactly why you&apos;re the right fit for the role.
+            Share one link instead of a PDF. See who looked, and when — so you
+            know exactly when to follow up.
           </p>
           <Link
             href="/signup"

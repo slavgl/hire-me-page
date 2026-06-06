@@ -36,7 +36,10 @@ export function BrandLogo({
             }
       }
     >
-      HireMe.page
+      HireMe
+      <span className="ml-[0.22em] inline-flex items-center rounded-[0.28em] bg-[#2D3E40] px-[0.32em] pt-[0.14em] pb-[0.3em] align-[0.2em] text-[0.6em] font-semibold leading-none text-white dark:bg-neutral-200 dark:text-[#2D3E40]">
+        .page
+      </span>
     </span>
   );
 
