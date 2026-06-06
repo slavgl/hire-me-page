@@ -21,6 +21,13 @@ export function RegenerateAiButton({
   const [error, setError] = useState<string | null>(null);
 
   async function run() {
+    if (
+      !window.confirm(
+        "Regenerating replaces the current AI sections, including any manual edits. Continue?",
+      )
+    ) {
+      return;
+    }
     setError(null);
     setBusy(true);
     try {
