@@ -28,13 +28,13 @@ export default function LandingPage() {
       <main className="mx-auto max-w-5xl px-4 pb-24 pt-6 sm:px-6 sm:pt-10">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl sm:leading-tight dark:text-neutral-50">
-            Know the moment a recruiter
+            Stop guessing how your
             <br />
-            opens your application.
+            job search is going.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-600 sm:text-xl dark:text-neutral-400">
-            Share one link instead of a PDF. See who looked, and when — so you
-            know exactly when to follow up.
+            Write a sharper cover letter with AI, and get notified the moment
+            a recruiter reviews it.
           </p>
           <Link
             href="/signup"
@@ -123,10 +123,7 @@ export default function LandingPage() {
           </h2>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900/60">
-              <p className="text-2xl" aria-hidden>
-                ⚡
-              </p>
-              <h3 className="mt-3 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                 Zero friction, instant link
               </h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
@@ -135,10 +132,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900/60">
-              <p className="text-2xl" aria-hidden>
-                🧠
-              </p>
-              <h3 className="mt-3 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                 AI-powered fit analysis
               </h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
@@ -148,10 +142,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900/60 sm:col-span-2 lg:col-span-1">
-              <p className="text-2xl" aria-hidden>
-                📊
-              </p>
-              <h3 className="mt-3 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                 Smart Tracking
               </h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">

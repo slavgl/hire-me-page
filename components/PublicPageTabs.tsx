@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function PublicPageTabs({ page, structured, whyFit }: Props) {
-  const [tab, setTab] = useState<"resume" | "why">("resume");
+  const [tab, setTab] = useState<"resume" | "why">("why");
 
   if (!whyFit) {
     return <ResumePresentation page={page} structured={structured} />;
